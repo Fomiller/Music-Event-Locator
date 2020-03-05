@@ -92,6 +92,16 @@ $(document).ready(function() {
                 responseArray.push(event);
             })
 
+           
+           
+            for (var i = 0; i < responseArray.length; i++) {
+                var currentMarker = [response._embedded.events[0]._embedded.venues[0].location.latitude, response._embedded.events[0]._embedded.venues[0].location.longitude];
+                currentMarker = L.marker(currentMarker).addTo(mymap);
+
+                var currentPopup = `<strong>${response._embedded.events[0].name}:</strong> ${response._embedded.events[0]._embedded.venues[0].name}`;
+                currentMarker.bindPopup(currentPopup);
+                
+            }
 
             resObject = {
                 "name": response._embedded.events[0]._embedded.venues[0].name,
@@ -100,6 +110,10 @@ $(document).ready(function() {
                 "latitude": response._embedded.events[0]._embedded.venues[0].location.latitude,  
             }
 
+            // var currentMarker = [results.latitude, results.longitude];
+
+            // var currentMarker1 = L.marker(currentMarker).addTo(mymap);
+            // currentMarker1.bindPopup(`<strong>${response._embedded.events[0].name}:</strong> ${response._embedded.events[0]._embedded.venues[0].name}`);
             // response._embedded.events[0].images.forEach(image => {
             //     console.log(image.url);
             // })
