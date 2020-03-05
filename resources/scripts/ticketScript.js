@@ -85,7 +85,18 @@ $(document).ready(function() {
             // returns event venue latitude coordinate
             console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
+
             results = {
+
+
+            responseArray = [];
+            // create the responseArray
+            response._embedded.events.forEach(event => {
+                responseArray.push(event);
+            })
+
+
+            resObject = {
                 "name": response._embedded.events[0]._embedded.venues[0].name,
                 "venueName": response._embedded.events[0]._embedded.venues[0].name,
                 "longitude": response._embedded.events[0]._embedded.venues[0].location.longitude,
