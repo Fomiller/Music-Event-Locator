@@ -15,5 +15,8 @@
 .card {
   border-radius: 25px 25px 25px 25px;
   padding: 20px;
-  margin-left: 10px;
+}
+
+#submitBtn {
+  border-radius: 25px;
 }
