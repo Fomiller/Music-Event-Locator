@@ -2,8 +2,13 @@
 
 // Leaflet Docs: https://leafletjs.com/examples/quick-start/
 
-// Receives lat and long from form for centering the map
-var longLat = [36.165726, -86.784032];
+// Receives lat and long from geoPlugin API
+
+// If user does not enter city input
+var longLat = [geoplugin_latitude(), geoplugin_longitude()];
+
+// If user enters city input, will need a different longLat
+
 
 // Initializes a new map
 var mymap = L.map('map').setView(longLat, 13);
@@ -29,7 +34,5 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // marker1.bindPopup("<strong>A POPUP</strong> Check me out.")
 // marker2.bindPopup("And I'm a different popup!")
-
-
 
 
