@@ -86,6 +86,9 @@ $(document).ready(function() {
             console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
 
+            results = {
+
+
             responseArray = [];
             // create the responseArray
             response._embedded.events.forEach(event => {
@@ -105,10 +108,13 @@ $(document).ready(function() {
 
             resObject = {
                 "name": response._embedded.events[0]._embedded.venues[0].name,
-                "venue-name": response._embedded.events[0]._embedded.venues[0].name,
+                "venueName": response._embedded.events[0]._embedded.venues[0].name,
                 "longitude": response._embedded.events[0]._embedded.venues[0].location.longitude,
                 "latitude": response._embedded.events[0]._embedded.venues[0].location.latitude,  
             }
+            
+            var currentMarker = [results.latitude, results.longitude];
+
 
             // var currentMarker = [results.latitude, results.longitude];
 
