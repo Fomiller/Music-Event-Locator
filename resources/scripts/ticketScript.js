@@ -85,13 +85,17 @@ $(document).ready(function() {
             // returns event venue latitude coordinate
             console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
-            resObject = {
+            results = {
                 "name": response._embedded.events[0]._embedded.venues[0].name,
-                "venue-name": response._embedded.events[0]._embedded.venues[0].name,
+                "venueName": response._embedded.events[0]._embedded.venues[0].name,
                 "longitude": response._embedded.events[0]._embedded.venues[0].location.longitude,
                 "latitude": response._embedded.events[0]._embedded.venues[0].location.latitude,  
             }
+            
+            var currentMarker = [results.latitude, results.longitude];
 
+            var currentMarker1 = L.marker(currentMarker).addTo(mymap);
+            currentMarker1.bindPopup(`<strong>${results.name}:</strong> ${results.venueName}`);
             // response._embedded.events[0].images.forEach(image => {
             //     console.log(image.url);
             // })
