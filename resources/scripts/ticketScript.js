@@ -2,14 +2,14 @@ $(document).ready(function() {
     // GLOBAL VARIABLES
     // API KEY
     var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events"
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
     
     function getEventDetails() {
         // Filter by classification name: name of any segment, genre, sub-genre, type, sub-type. Negative filtering is supported by using the following format '-'. Be aware that negative filters may cause decreased performance.
         var eventType = "classificationName=music&";
         var keyword;
         var city;
-        var postalCode;
+        var postalCode = "postalCode=" + 37203 + "&";
         // the map api takes in longitude then lat. 
         var latLong;
         // Radius of the area in which we want to search for events.
@@ -18,7 +18,8 @@ $(document).ready(function() {
         var unit;
         var stateCode;
         var countryCode;
-        var size;
+        // sets how many events to return
+        var size = "size=" + 10 + "&";
         var page; 
         // asc = ascending z-a; 10-1
         // desc = descending a-z; 1-10
@@ -29,7 +30,8 @@ $(document).ready(function() {
         var endDateTime;
 
         // URL used to request event details 
-        var eventDetailsURL = queryURL + ".json?" + eventType + apiKey ;
+        var eventDetailsURL = queryURL + eventType + size + postalCode + apiKey ;
+    // ajax request for event details    
         // ajax request for event details    
         $.ajax({
             url: eventDetailsURL,
@@ -83,6 +85,12 @@ $(document).ready(function() {
             // returns event venue latitude coordinate
             console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
+            resObject = {
+                "name": response._embedded.events[0]._embedded.venues[0].name,
+                "venue-name": response._embedded.events[0]._embedded.venues[0].name,
+                "longitude": response._embedded.events[0]._embedded.venues[0].location.longitude,
+                "latitude": response._embedded.events[0]._embedded.venues[0].location.latitude,  
+            }
 
             // response._embedded.events[0].images.forEach(image => {
             //     console.log(image.url);
