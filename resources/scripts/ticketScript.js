@@ -95,8 +95,13 @@ $(document).ready(function() {
                 responseArray.push(event);
             });
 
-           
-           // For Loop creates pins for every search result and places them on map
+
+            // Pans to recenter map, zooms in closer.
+            mymap.panTo([responseArray[0]._embedded.venues[0].location.latitude, responseArray[0]._embedded.venues[0].location.longitude]);
+            mymap.zoomIn(2);
+            
+            
+            // For Loop creates pins for every search result and places them on map
             for (var i = 0; i < responseArray.length; i++) {
                 // Sets latitude and longitude of current marker
                 var currentMarker = [responseArray[i]._embedded.venues[0].location.latitude, responseArray[i]._embedded.venues[0].location.longitude];
@@ -110,6 +115,8 @@ $(document).ready(function() {
                 
                 // Adds current popup to current marker
                 newMarker.bindPopup(newPopup); 
+
+                lastCoords = currentMarker;
                 
             }
             
