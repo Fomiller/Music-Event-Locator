@@ -58,4 +58,28 @@ $(document).ready(function() {
 
   addSavedArtistsToPage();
 
+  $(".button").on("click", function() {
+
+    // Changes star to become just an outline
+    $(this).children().children().toggleClass("far");
+
+    $(this).parent().parent().parent().empty();
+
+    for (var i = 0; i < savedBands.length; i++) {
+      if (savedBands[i].id === $(this).attr("id")) {
+        savedBands.splice(i,1);
+        
+        localStorage.setItem("favoriteBands", JSON.stringify(savedBands));
+      }
+    }
+
+
+  })
+
 });
+
+
+/*
+favoriteBands: [{"id": "0001", "name": "The Head and the Heart", "venue": "Ascend Ampitheatre", "date": "May 5", "imgSrc": "https://upload.wikimedia.org/wikipedia/commons/c/ca/THATH_sunset.jpg"}, {"id": "0002", "name": "Billie Eyelash", "venue": "Bridgestone Arena", "date": "May 6", "imgSrc": "https://pmcvariety.files.wordpress.com/2019/12/billie-eilish-cover-story-7.jpg?w=1000&h=1250"}]
+
+*/
