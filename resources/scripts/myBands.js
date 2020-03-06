@@ -37,10 +37,9 @@ $(document).ready(function() {
     // Builds all components for descriptionDiv
     var title = $("<h3>").addClass("title is-3").text(bandArr.name).append(button);
     var bioDiv = $("<div>");
-    var bio = $("<p>").addClass("mb-1").text("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti possimus officiis officia dolorum sit quia explicabo sed sunt ex nihil minus molestiae vel at, repudiandae error ducimus. Deserunt, eius.");
     var eventVenue = $("<h5>").addClass("title is-5 is-inline mr-1").text(bandArr.venue);
     var eventDate = $("<h5>").addClass("title is-5 is-inline").text(bandArr.date)
-    bioDiv.append(bio, eventVenue, eventDate);
+    bioDiv.append(eventVenue, eventDate);
 
     // Pieces together each major Div
     descriptionDiv.append(title, bioDiv);
