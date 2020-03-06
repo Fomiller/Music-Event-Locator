@@ -93,30 +93,22 @@ $(document).ready(function() {
             })
 
            
-           
+           // For Loop creates pins for every search result and places them on map
             for (var i = 0; i < responseArray.length; i++) {
-                var currentMarker = [response._embedded.events[0]._embedded.venues[0].location.latitude, response._embedded.events[0]._embedded.venues[0].location.longitude];
-                currentMarker = L.marker(currentMarker).addTo(mymap);
+                // Sets latitude and longitude of current marker
+                var currentMarker = [responseArray[i]._embedded.venues[0].location.latitude, responseArray[i]._embedded.venues[0].location.longitude];
 
-                var currentPopup = `<strong>${response._embedded.events[0].name}:</strong> ${response._embedded.events[0]._embedded.venues[0].name}`;
-                currentMarker.bindPopup(currentPopup);
+                // Pins current marker to map
+                newMarker = L.marker(currentMarker).addTo(mymap);
+
+                // Creates text for current popup
+                var newPopup = `<strong>${responseArray[i].name}:</strong> ${responseArray[i]._embedded.venues[0].name}`;
+                
+                // Adds current popup to current marker
+                newMarker.bindPopup(newPopup); 
                 
             }
 
-            resObject = {
-                "name": response._embedded.events[0]._embedded.venues[0].name,
-                "venue-name": response._embedded.events[0]._embedded.venues[0].name,
-                "longitude": response._embedded.events[0]._embedded.venues[0].location.longitude,
-                "latitude": response._embedded.events[0]._embedded.venues[0].location.latitude,  
-            }
-
-            // var currentMarker = [results.latitude, results.longitude];
-
-            // var currentMarker1 = L.marker(currentMarker).addTo(mymap);
-            // currentMarker1.bindPopup(`<strong>${response._embedded.events[0].name}:</strong> ${response._embedded.events[0]._embedded.venues[0].name}`);
-            // response._embedded.events[0].images.forEach(image => {
-            //     console.log(image.url);
-            // })
         })
     
     // End getEventDetails function

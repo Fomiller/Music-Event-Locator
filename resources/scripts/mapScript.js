@@ -9,7 +9,7 @@ var longLat = [geoplugin_latitude(), geoplugin_longitude()];
 
 
 // Initializes a new map
-var mymap = L.map('map').setView(longLat, 13);
+var mymap = L.map('map').setView(longLat, 12);
 
 
 // Map will configure while using mapbox
