@@ -10,6 +10,7 @@ $(document).ready(function() {
         var eventType = "classificationName=";
         var keyword = "keyword=" + $("#artistID").val() + "&";
         var postalCode = "postalCode=" + $("#zipID").val() + "&";
+        console.log(postalCode);
         // var setLatLong = "latlong=" + + "," + + "&"; 
         var localLatLong = "latlong=" + geoplugin_latitude() + "," + geoplugin_longitude() + "&";
         var radius;
@@ -55,53 +56,53 @@ $(document).ready(function() {
             url: eventDetailsURL,
             method: "GET",
         }).then(function(response){
-            // // returns response obj
-            // console.log(response);
-            // // returns event obj
-            // console.log(response._embedded);
-            // // returns array of events
-            // console.log(response._embedded.events);
-            // // returns event array index position
-            // console.log(response._embedded.events[0]);
-            // // returns event name
-            // console.log(response._embedded.events[0].name);
-            // // returns event type
-            // console.log(response._embedded.events[0].type);
-            // // returns event id
-            // console.log(response._embedded.events[0].type);
-            // // returns url for ticketmaster.com to view event seats and prices
-            // console.log(response._embedded.events[0].url);
+            // returns response obj
+            console.log(response);
+            // returns event obj
+            console.log(response._embedded);
+            // returns array of events
+            console.log(response._embedded.events);
+            // returns event array index position
+            console.log(response._embedded.events[0]);
+            // returns event name
+            console.log(response._embedded.events[0].name);
+            // returns event type
+            console.log(response._embedded.events[0].type);
+            // returns event id
+            console.log(response._embedded.events[0].type);
+            // returns url for ticketmaster.com to view event seats and prices
+            console.log(response._embedded.events[0].url);
 
-            // // returns event venue data
-            // console.log(response._embedded.events[0]._embedded);
-            // // returns event venue array
-            // console.log(response._embedded.events[0]._embedded.venues[0]);
-            // // returns event venue name
-            // console.log(response._embedded.events[0]._embedded.venues[0].name);
-            // // returns event venue postal code
-            // console.log(response._embedded.events[0]._embedded.venues[0].postalCode);
-            // // returns event venue city obj
-            // console.log(response._embedded.events[0]._embedded.venues[0].city);
-            // // returns event venue city name === string
-            // console.log(response._embedded.events[0]._embedded.venues[0].city.name);
-            // // returns event venue state obj
-            // console.log(response._embedded.events[0]._embedded.venues[0].state);
-            // // returns event venue state name
-            // console.log(response._embedded.events[0]._embedded.venues[0].state.name);
-            // // returns event venue state code; example === "TX", "CO";
-            // console.log(response._embedded.events[0]._embedded.venues[0].state.stateCode);
-            // // returns event venue address obj
-            // console.log(response._embedded.events[0]._embedded.venues[0].address);
-            // // returns event venue street address; example "1510 Polk St"
-            // console.log(response._embedded.events[0]._embedded.venues[0].address.line1);
-            // // returns event venue address city and state; example "Houston, TX"
-            // console.log(response._embedded.events[0]._embedded.venues[0].address.line2);
-            // // returns event venue location obj
-            // console.log(response._embedded.events[0]._embedded.venues[0].location);
-            // // returns event venue longitude coordinate
-            // console.log(response._embedded.events[0]._embedded.venues[0].location.longitude);
-            // // returns event venue latitude coordinate
-            // console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
+            // returns event venue data
+            console.log(response._embedded.events[0]._embedded);
+            // returns event venue array
+            console.log(response._embedded.events[0]._embedded.venues[0]);
+            // returns event venue name
+            console.log(response._embedded.events[0]._embedded.venues[0].name);
+            // returns event venue postal code
+            console.log(response._embedded.events[0]._embedded.venues[0].postalCode);
+            // returns event venue city obj
+            console.log(response._embedded.events[0]._embedded.venues[0].city);
+            // returns event venue city name === string
+            console.log(response._embedded.events[0]._embedded.venues[0].city.name);
+            // returns event venue state obj
+            console.log(response._embedded.events[0]._embedded.venues[0].state);
+            // returns event venue state name
+            console.log(response._embedded.events[0]._embedded.venues[0].state.name);
+            // returns event venue state code; example === "TX", "CO";
+            console.log(response._embedded.events[0]._embedded.venues[0].state.stateCode);
+            // returns event venue address obj
+            console.log(response._embedded.events[0]._embedded.venues[0].address);
+            // returns event venue street address; example "1510 Polk St"
+            console.log(response._embedded.events[0]._embedded.venues[0].address.line1);
+            // returns event venue address city and state; example "Houston, TX"
+            console.log(response._embedded.events[0]._embedded.venues[0].address.line2);
+            // returns event venue location obj
+            console.log(response._embedded.events[0]._embedded.venues[0].location);
+            // returns event venue longitude coordinate
+            console.log(response._embedded.events[0]._embedded.venues[0].location.longitude);
+            // returns event venue latitude coordinate
+            console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
 
             results = {}
