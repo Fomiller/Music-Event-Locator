@@ -1,18 +1,18 @@
 .mapboxArea {
   height: 500px;
-  /* width: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; */
+  flex-direction: column;
   
 }
 
 
 #map {
   height: 100%;
-  /* width: 75%;
-  border-radius: 4px; */
+  width: 85%;
+  border-radius: 4px;
 }
 
 .card {
