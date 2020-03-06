@@ -86,14 +86,14 @@ $(document).ready(function() {
             console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
 
-            results = {
+            results = {}
 
 
             responseArray = [];
             // create the responseArray
             response._embedded.events.forEach(event => {
                 responseArray.push(event);
-            })
+            });
 
            
            
