@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Bands</title>
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/style/style.css">
+    <!-- FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""></script>
+    <!-- GeoPlugin API -->
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <section class="hero is-primary is-medium">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+                <div class="navbar-brand">
+                  <a class="navbar-item">
+                      <!-- this needs to be replaced with a logo of sorts. -->
+                    <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                  </a>
+                  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenuHeroB">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                  <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">
+                      Home
+                    </a>
+                    <a class="navbar-item is-active">
+                      My Bands
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+      
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                My Bands
+              </h1>
+              <h2 class="subtitle">
+                subtitle
+              </h2>
+            </div>
+          </div>
+      
+      </section>
+      <section id="mybands" class="py-5">
+		<div class="container">
+			<!-- this will need to be dynamically generated with JavaScript becasuse we will never know how many search results to display -->
+			<!-- this is for mockup purposes only -->
+			<div class="columns">
+				<div class="column">
+					<div class="card">
+						<div class="columns">
+							<!-- image column / left column  -->
+							<div class="column is-3">
+								<figure class="image image is-16by9">
+									<img src="https://bulma.io/images/placeholders/640x360.png" alt="placeholder img">
+								</figure>
+							</div>
+							<!-- content column / right column -->
+							<div class="column">
+								<h3 class="title is-3">Band name</h3>
+								<div>
+									<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti possimus officiis officia dolorum sit quia explicabo sed sunt ex nihil minus molestiae vel at, repudiandae error ducimus. Deserunt, eius.</p>
+									<h5 class="title is-5 is-inline mr-1">Event Venue</h4>
+									<h5 class="title is-5 is-inline">Date</h4>
+								</div>	
+							</div>
+							<!-- i would like the star to be centered vertically / using the level class-->
+							<div class="column is-1 level">
+								<div class="level-item">
+									<i class="far fa-star"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <!-- band 2 -->
+            <div class="columns">
+				<div class="column">
+					<div class="card">
+						<div class="columns">
+							<!-- image column / left column  -->
+							<div class="column is-3">
+								<figure class="image image is-16by9">
+									<img src="https://bulma.io/images/placeholders/640x360.png" alt="placeholder img">
+								</figure>
+							</div>
+							<!-- content column / right column -->
+							<div class="column">
+								<h3 class="title is-3">Band name</h3>
+								<div>
+									<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti possimus officiis officia dolorum sit quia explicabo sed sunt ex nihil minus molestiae vel at, repudiandae error ducimus. Deserunt, eius.</p>
+									<h5 class="title is-5 is-inline mr-1">Event Venue</h4>
+									<h5 class="title is-5 is-inline">Date</h4>
+								</div>	
+							</div>
+							<!-- i would like the star to be centered vertically / using the level class-->
+							<div class="column is-1 level">
+								<div class="level-item">
+									<i class="far fa-star"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <!-- band 3 -->
+            <div class="columns">
+				<div class="column">
+					<div class="card">
+						<div class="columns">
+							<!-- image column / left column  -->
+							<div class="column is-3">
+								<figure class="image image is-16by9">
+									<img src="https://bulma.io/images/placeholders/640x360.png" alt="placeholder img">
+								</figure>
+							</div>
+							<!-- content column / right column -->
+							<div class="column">
+								<h3 class="title is-3">Band name</h3>
+								<div>
+									<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti possimus officiis officia dolorum sit quia explicabo sed sunt ex nihil minus molestiae vel at, repudiandae error ducimus. Deserunt, eius.</p>
+									<h5 class="title is-5 is-inline mr-1">Event Venue</h4>
+									<h5 class="title is-5 is-inline">Date</h4>
+								</div>	
+							</div>
+							<!-- i would like the star to be centered vertically / using the level class-->
+							<div class="column is-1 level">
+								<div class="level-item">
+									<i class="far fa-star"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <!-- band 4 -->
+            <div class="columns">
+				<div class="column">
+					<div class="card">
+						<div class="columns">
+							<!-- image column / left column  -->
+							<div class="column is-3">
+								<figure class="image image is-16by9">
+									<img src="https://bulma.io/images/placeholders/640x360.png" alt="placeholder img">
+								</figure>
+							</div>
+							<!-- content column / right column -->
+							<div class="column">
+								<h3 class="title is-3">Band name</h3>
+								<div>
+									<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti possimus officiis officia dolorum sit quia explicabo sed sunt ex nihil minus molestiae vel at, repudiandae error ducimus. Deserunt, eius.</p>
+									<h5 class="title is-5 is-inline mr-1">Event Venue</h4>
+									<h5 class="title is-5 is-inline">Date</h4>
+								</div>	
+							</div>
+							<!-- i would like the star to be centered vertically / using the level class-->
+							<div class="column is-1 level">
+								<div class="level-item">
+									<i class="far fa-star"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <!-- band 5 -->
+		</div>
+
+	</section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Foooter -->
+<footer class="footer pb-3 pt-5">
+    <div class="content has-text-centered">
+        <p>
+        <strong>Created</strong> by 
+        <a href="https://github.com/Fomiller">Forrest Miller, </a>
+        <a href="https://github.com/garrettmroberts">Garrett Roberts, </a>
+        <a href="https://github.com/trembo-TN">Lee Trembley, </a> and
+        <a href="https://github.com/Sofasloth27">Mitchell Huffstetler</a>
+        </p>
+    </div>
+</footer>
+<script>var results = {};</script>
+<script src="resources/scripts/mapScript.js"></script>
+<script src="resources/scripts/ticketScript.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>

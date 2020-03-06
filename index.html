@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Event Locator</title>
-
+    <title>Music Event Locator</title>
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/style/style.css">
     <!-- FontAwesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -18,29 +17,23 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
-
-      <!-- GeoPlugin API -->
-      <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
-
+    <!-- GeoPlugin API -->
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-
-      <link rel="stylesheet" type="text/css" href="resources/style/style.css">
-
-  
-
-      
   </head>
   <body>
+    <!-- Hero section -->
     <section class="hero is-info is-medium">
+      <!-- Hero Nav Bar -->
       <div class="hero-head">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="container">
             <div class="navbar-brand">
               <a class="navbar-item">
-                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+				  <!-- this needs to be replaced with a logo of sorts. -->
+				<img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
               </a>
               <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenuHeroB">
                 <span aria-hidden="true"></span>
@@ -48,13 +41,12 @@
                 <span aria-hidden="true"></span>
               </a>
             </div>
-
             <div id="navbarMenuHeroB" class="navbar-menu">
               <div class="navbar-end">
                 <a class="navbar-item is-active">
                   Home
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item" href="mybands.html">
                   My Bands
                 </a>
               </div>
@@ -62,111 +54,246 @@
           </div>
         </nav>
       </div>
-    
+      <!-- Hero Body -->
       <div class="hero-body">
+        <div class="container">
+          <!-- Search form -->
         <div class="columns">
-          <div class="column">
-            <div class="card">
-              <div class="field">
-                <label class="label">Genre</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="country, electronic, rock, etc.">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">State</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="TN">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Zip</label>
-                <div class="control">
-                  <input class="input" type="number" placeholder="37203">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Venue</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Bridgestone Arena">
-                </div>
-              </div>
-            </div> 
-          </div>
-
-          <div class="column">
-            <div class="card">
-              <div class="field">
-                <label class="label">Genre</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="country, electronic, rock, etc.">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">State</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="TN">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Zip</label>
-                <div class="control">
-                  <input class="input" type="number" placeholder="37203">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Venue</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Bridgestone Arena">
-                </div>
-              </div>
-            </div> 
-          </div>
+			<div class="column"> 
+				<!-- search form wrapper -->
+				<div class="card">
+					<div class="columns">
+						<!-- left search -->
+						<div class="column is-half">
+							<div class="field">
+								<label class="label">Artist</label>
+								<div class="control">
+								  <input class="input" type="text" placeholder="country, electronic, rock, etc.">
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">State</label>
+								<div class="control">
+								  <input class="input" type="text" placeholder="TN">
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">Zip</label>
+								<div class="control">
+								  <input class="input" type="number" placeholder="37203">
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">Venue</label>
+								<div class="control">
+								  <input class="input" type="text" placeholder="Bridgestone Arena">
+								</div>
+							  </div>
+						</div>
+						<!-- right search -->
+						<div class="column is-half">
+							<div class="field">
+								<label class="label">Genre</label>
+								<div class="control">
+								  <input class="input" type="text" placeholder="country, electronic, rock, etc.">
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">State</label>
+								<div class="control">
+								  <input class="input" type="text" placeholder="TN">
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">Zip</label>
+								<div class="control">
+								  <input class="input" type="number" placeholder="37203">
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">Venue</label>
+								<div class="control">
+								  <input class="input" type="text" placeholder="Bridgestone Arena">
+								</div>
+							  </div>
+						</div>
+					</div>
+				</div>	
+			</div>
         </div>
+        <!-- Search Button -->
         <div class="columns">
-          <div class="column is-half is-offset-one-quarter">
+          <div class="column is-4 is-offset-4">
             <button class="button is-danger is-fullwidth" id="submitBtn">Submit</button>
           </div>
         </div>
       </div>
-    
+    </div>
+      <!-- Hero Footer -->
       <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
           <div class="container">
             <ul>
               <li class="is-active">
-                <a>Overview</a>
+                <a href="#featured-section">Featured Events</a>
               </li>
               <li>
-                <a>Modifiers</a>
+                <a href="#map-section">Map</a>
               </li>
               <li>
-                <a>Grid</a>
-              </li>
-              <li>
-                <a>Elements</a>
-              </li>
-              <li>
-                <a>Components</a>
-              </li>
-              <li>
-                <a>Layout</a>
+                <a href="#search-section">Search Results</a>
               </li>
             </ul>
           </div>
         </nav>
       </div>
     </section>
+	<!-- featured Events section -->
+	<section id="featured-section" class="py-5">
+		<div class="container">
+			<h2 class="title is-1 has-text-centered">Featured Events</h2>
+			<div class="columns">
+				<div class="column is-one-third">
+					<!-- featured card 1 -->
+					<div class="card">
+						<div class="card-image">
+						  <figure class="image is-4by3">
+							<img id="featured-image-1" src="https://bulma.io/images/placeholders/1280x960.png" alt="featured image">
+						  </figure>
+						</div>
+						<div class="card-content">
+						  <div class="media">
+							<div class="media-content">
+							  <p id="featured-title-1" class="title is-4 featured-title">John Smith</p>
+							</div>
+						  </div>					  
+						  <div id="featured-content-2" class="content featured-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Phasellus nec iaculis mauris. 
+							<br>
+							<br>
+							<time id="featured-time-1" datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+						  </div>
+						</div>
+					  </div>
+				</div>
+				<div class="column is-one-third">
+					<!-- featured card 2 -->
+					<div class="card">
+						<div class="card-image">
+						  <figure class="image is-4by3">
+							<img id="featured-image-2" src="https://bulma.io/images/placeholders/1280x960.png" alt="featured image">
+						  </figure>
+						</div>
+						<div class="card-content">
+						  <div class="media">
+							<div class="media-content">
+							  <p id="featured-title-2" class="title is-4 featured-title">John Smith</p>
+							</div>
+						  </div>					  
+						  <div id="featured-content-2"class="content featured-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Phasellus nec iaculis mauris. 
+							<br>
+							<br>
+							<time id="featured-time-2" datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+						  </div>
+						</div>
+					  </div>
+				</div>
+				<div class="column is-one-third">
+					<!-- featured card 3 -->
+					<div class="card">
+						<div class="card-image">
+						  <figure class="image is-4by3">
+							<img id="featured-image-3" src="https://bulma.io/images/placeholders/1280x960.png" alt="featured image">
+						  </figure>
+						</div>
+						<div class="card-content">
+						  <div class="media">
+							<div class="media-content">
+							  <p id="featured-title-3" class="title is-4 featured-title">John Smith</p>
+							</div>
+						  </div>					  
+						  <div id="featured-content-3" class="content featured-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Phasellus nec iaculis mauris. 
+							<br>
+							<br>
+							<time id="featured-time-3" datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+						  </div>
+						</div>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <!-- Map section -->
+    <section id="map-section" class="py-5">
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<div class="mapboxArea">
+					<h2 class="title is-2">Map</h2>
+					<div id="map"></div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="search-section" class="py-5">
+		<div class="container">
+			<!-- this will need to be dynamically generated with JavaScript becasuse we will never know how many search results to display -->
+			<!-- this is for mockup purposes only -->
+			<div class="columns">
+				<div class="column">
+					<div class="card">
+						<div class="columns">
+							<!-- image column / left column  -->
+							<div class="column is-3">
+								<figure class="image image is-16by9">
+									<img src="https://bulma.io/images/placeholders/640x360.png" alt="placeholder img">
+								</figure>
+							</div>
+							<!-- content column / right column -->
+							<div class="column">
+								<h3 class="title is-3">Band name</h3>
+								<div>
+									<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti possimus officiis officia dolorum sit quia explicabo sed sunt ex nihil minus molestiae vel at, repudiandae error ducimus. Deserunt, eius.</p>
+									<h5 class="title is-5 is-inline mr-1">Event Venue</h4>
+									<h5 class="title is-5 is-inline">Date</h4>
+								</div>	
+							</div>
+							<!-- i would like the star to be centered vertically / using the level class-->
+							<div class="column is-1 level">
+								<div class="level-item">
+									<i class="far fa-star"></i>
+								</div>
+							</div>
+						</div>
+					</div>
 
-    <!-- This needs to be optimized with Bulma -->
-    <section class="mapboxArea container" >
-      <h2>Map</h2>
-      <div id="map"></div>
-    </section>
+				</div>
+			</div>
+		</div>
 
-    <script>
-      var results = {};
-    </script>
+	</section>
+
+
+
+	<!-- Foooter -->
+	<footer class="footer pb-3 pt-5">
+		<div class="content has-text-centered">
+			<p>
+			<strong>Created</strong> by 
+			<a href="https://github.com/Fomiller">Forrest Miller, </a>
+			<a href="https://github.com/garrettmroberts">Garrett Roberts, </a>
+			<a href="https://github.com/trembo-TN">Lee Trembley, </a> and
+			<a href="https://github.com/Sofasloth27">Mitchell Huffstetler</a>
+			</p>
+		</div>
+	</footer>
+    <script>var results = {};</script>
     <script src="resources/scripts/mapScript.js"></script>
     <script src="resources/scripts/ticketScript.js"></script>
     <script>
