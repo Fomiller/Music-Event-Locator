@@ -47,12 +47,12 @@ $(document).ready(function() {
    outerContainer.append(innerContainer)
 
    // Appends new artist to html
-    $(".container").append(outerContainer)
+    $("#myBandsContainer").append(outerContainer)
   }
 
-  
+
   populateFavoriteBands()
-  
+
 
 
 })
