@@ -7,27 +7,29 @@ $(document).ready(function() {
     function getEventDetails() {
         // Filter by classification name: name of any segment, genre, sub-genre, type, sub-type. Negative filtering is supported by using the following format '-'. Be aware that negative filters may cause decreased performance.
         var eventType = "classificationName=music&";
-        var keyword;
-        var city;
+        var keyword = "keyword" +  + "&";
+        var city = "city" + + "&";
         var postalCode = "postalCode=" + 37203 + "&";
-        // the map api takes in longitude then lat. 
-        var latLong;
+        // the map api takes in longitude then lat.
+        var lat;
+        var long;  
+        var latlong = [];
         // Radius of the area in which we want to search for events.
         var radius;
         // Unit of the radius "miles", "km
-        var unit;
-        var stateCode;
-        var countryCode;
+        var unit = "unit" + + "&";
+        var stateCode = "stateCode" + + "&";
+        var countryCode = "countryCode" + + "&";
         // sets how many events to return
         var size = "size=" + 10 + "&";
-        var page; 
+        var page = "page" + + "&"; 
         // asc = ascending z-a; 10-1
         // desc = descending a-z; 1-10
         // Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 'venueName,asc', 'venueName,desc', 'random'
         var sort;
-        var genreId;
-        var startDateTime;
-        var endDateTime;
+        var genreId = "genreId" + + "&";
+        var startDateTime = "startDateTime" + + "&";
+        var endDateTime = "endDateTime" + + "&";
 
         // URL used to request event details 
         var eventDetailsURL = queryURL + eventType + size + postalCode + apiKey ;
