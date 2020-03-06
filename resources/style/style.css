@@ -20,5 +20,88 @@
 }
 
 #submitBtn {
+}
 
+/* padding top and bottom classes */
+.py-1 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.py-2 {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.py-3 {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.py-4 {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+.py-5 {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+.px-1 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.px-2 {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.px-3 {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+.px-4 {
+  margin-left: 4em;
+  margin-right: 4em;
+}
+.px-5 {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+/* margin top and bottom classes */
+.my-1 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.my-2 {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.my-3 {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.my-4 {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+.my-5 {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+.mx-1 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.mx-2 {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.mx-3 {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+.mx-4 {
+  margin-left: 4em;
+  margin-right: 4em;
+}
+.mx-5 {
+  margin-left: 5em;
+  margin-right: 5em;
 }
