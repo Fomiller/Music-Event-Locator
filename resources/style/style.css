@@ -1,5 +1,6 @@
 .mapboxArea {
   height: 500px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,12 +9,12 @@
 }
 
 #map {
-  height: 90%;
-  width: 95%;
+  height: 100%;
+  width: 75%;
 }
 
 .card {
-  border-radius: 25px 25px 25px 25px;
+  border-radius: 4px;
   padding: 20px;
 }
 
