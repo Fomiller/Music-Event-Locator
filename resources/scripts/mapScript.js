@@ -1,4 +1,4 @@
-
+var mymap
 // Gets user coords in order to center map
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(res) {
@@ -7,7 +7,7 @@ if (navigator.geolocation) {
     var userCoords = [lat, long];
   
     // Creates a new map using user coords
-    var mymap = L.map('map').setView(userCoords, 12);
+    mymap = L.map('map').setView(userCoords, 11);
   
     // Styles newly created map
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -22,7 +22,7 @@ if (navigator.geolocation) {
 } else {
   // Creates a new map using generic coords
   var userCoords = ["38.937661", "-101.904738"]
-  var mymap = L.map('map').setView(userCoords, 15);
+  mymap = L.map('map').setView(userCoords, 5);
 
   // Styles newly created map
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
