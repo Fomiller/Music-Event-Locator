@@ -135,22 +135,13 @@
           <div class="container">
             <ul>
               <li class="is-active">
-                <a>Overview</a>
+                <a href="#featured-section">Featured Events</a>
               </li>
               <li>
-                <a>Modifiers</a>
+                <a href="#map-section">Map</a>
               </li>
               <li>
-                <a>Grid</a>
-              </li>
-              <li>
-                <a>Elements</a>
-              </li>
-              <li>
-                <a>Components</a>
-              </li>
-              <li>
-                <a>Layout</a>
+                <a href="#search-section">Search Results</a>
               </li>
             </ul>
           </div>
@@ -158,23 +149,25 @@
       </div>
     </section>
 	<!-- featured Events section -->
-	<section class="py-5">
+	<section id="featured-section" class="py-5">
 		<div class="container">
+			<h2 class="title is-1 has-text-centered">Featured Events</h2>
 			<div class="columns">
 				<div class="column is-one-third">
+					<!-- featured card 1 -->
 					<div class="card">
 						<div class="card-image">
 						  <figure class="image is-4by3">
-							<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+							<img id="featured-image-1" src="https://bulma.io/images/placeholders/1280x960.png" alt="featured image">
 						  </figure>
 						</div>
 						<div class="card-content">
 						  <div class="media">
 							<div class="media-content">
-							  <p class="title is-4">John Smith</p>
+							  <p id="featured-title-1" class="title is-4 featured-title">John Smith</p>
 							</div>
 						  </div>					  
-						  <div class="content">
+						  <div id="featured-content-2" class="content featured-content">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							Phasellus nec iaculis mauris. 
 							<br>
@@ -185,19 +178,20 @@
 					  </div>
 				</div>
 				<div class="column is-one-third">
+					<!-- featured card 2 -->
 					<div class="card">
 						<div class="card-image">
 						  <figure class="image is-4by3">
-							<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+							<img id="featured-image-2" src="https://bulma.io/images/placeholders/1280x960.png" alt="featured image">
 						  </figure>
 						</div>
 						<div class="card-content">
 						  <div class="media">
 							<div class="media-content">
-							  <p class="title is-4">John Smith</p>
+							  <p id="featured-title-2" class="title is-4 featured-title">John Smith</p>
 							</div>
 						  </div>					  
-						  <div class="content">
+						  <div id="featured-content-2"class="content featured-content">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							Phasellus nec iaculis mauris. 
 							<br>
@@ -208,19 +202,20 @@
 					  </div>
 				</div>
 				<div class="column is-one-third">
+					<!-- featured card 3 -->
 					<div class="card">
 						<div class="card-image">
 						  <figure class="image is-4by3">
-							<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+							<img id="featured-image-3" src="https://bulma.io/images/placeholders/1280x960.png" alt="featured image">
 						  </figure>
 						</div>
 						<div class="card-content">
 						  <div class="media">
 							<div class="media-content">
-							  <p class="title is-4">John Smith</p>
+							  <p id="featured-title-3" class="title is-4 featured-title">John Smith</p>
 							</div>
 						  </div>					  
-						  <div class="content">
+						  <div id="featured-content-3" class="content featured-content">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							Phasellus nec iaculis mauris. 
 							<br>
@@ -234,7 +229,7 @@
 		</div>
 	</section>
     <!-- Map section -->
-    <section class="container">
+    <section id="map-section" class="container">
 		<div class="container">
 			<div class="columns">
 				<div class="column">
@@ -246,28 +241,21 @@
 			</div>
 		</div>
 	</section>
+
+
+
 	<!-- Foooter -->
 	<footer class="footer pb-3 pt-5">
 		<div class="content has-text-centered">
-		  <p>
+			<p>
 			<strong>Created</strong> by 
 			<a href="https://github.com/Fomiller">Forrest Miller, </a>
 			<a href="https://github.com/garrettmroberts">Garrett Roberts, </a>
 			<a href="https://github.com/trembo-TN">Lee Trembley, </a> and
 			<a href="https://github.com/Sofasloth27">Mitchell Huffstetler</a>
-		  </p>
+			</p>
 		</div>
-	  </footer>
-
-
-
-
-
-
-
-
-
-
+	</footer>
     <script>var results = {};</script>
     <script src="resources/scripts/mapScript.js"></script>
     <script src="resources/scripts/ticketScript.js"></script>
