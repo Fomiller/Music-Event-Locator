@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Event Locator</title>
-
+    <title>Music Event Locator</title>
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/style/style.css">
     <!-- FontAwesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -18,23 +17,16 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
-
-      <!-- GeoPlugin API -->
-      <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
-
+    <!-- GeoPlugin API -->
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-
-      <link rel="stylesheet" type="text/css" href="resources/style/style.css">
-
-  
-
-      
   </head>
   <body>
+    <!-- Hero section -->
     <section class="hero is-info is-medium">
+      <!-- Hero Nav Bar -->
       <div class="hero-head">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="container">
@@ -48,7 +40,6 @@
                 <span aria-hidden="true"></span>
               </a>
             </div>
-
             <div id="navbarMenuHeroB" class="navbar-menu">
               <div class="navbar-end">
                 <a class="navbar-item is-active">
@@ -62,7 +53,7 @@
           </div>
         </nav>
       </div>
-    
+      <!-- Hero Body -->
       <div class="hero-body">
         <div class="columns">
           <div class="column">
@@ -93,7 +84,6 @@
               </div>
             </div> 
           </div>
-
           <div class="column">
             <div class="card">
               <div class="field">
@@ -129,7 +119,7 @@
           </div>
         </div>
       </div>
-    
+      <!-- Hero Footer -->
       <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
           <div class="container">
@@ -157,16 +147,23 @@
         </nav>
       </div>
     </section>
-
+    <!-- Map section -->
     <!-- This needs to be optimized with Bulma -->
     <section class="mapboxArea container" >
       <h2>Map</h2>
       <div id="map"></div>
     </section>
 
-    <script>
-      var results = {};
-    </script>
+
+
+
+
+
+
+
+
+
+    <script>var results = {};</script>
     <script src="resources/scripts/mapScript.js"></script>
     <script src="resources/scripts/ticketScript.js"></script>
     <script>
