@@ -11,6 +11,7 @@
 #map {
   height: 100%;
   width: 75%;
+  border-radius: 4px;
 }
 
 .card {
