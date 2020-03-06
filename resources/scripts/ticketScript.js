@@ -13,7 +13,8 @@ $(document).ready(function() {
         // the map api takes in longitude then lat.
         var lat;
         var long;  
-        var latlong = [];
+        var tmLatLong = [geoplugin_latitude(), geoplugin_longitude()];
+        console.log(tmLatLong);
         // Radius of the area in which we want to search for events.
         var radius;
         // Unit of the radius "miles", "km
