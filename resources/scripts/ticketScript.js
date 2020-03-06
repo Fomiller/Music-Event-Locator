@@ -86,6 +86,9 @@ $(document).ready(function() {
             console.log(response._embedded.events[0]._embedded.venues[0].location.latitude);
             
 
+            results = {
+
+
             responseArray = [];
             // create the responseArray
             response._embedded.events.forEach(event => {
@@ -101,6 +104,7 @@ $(document).ready(function() {
                 // Pins current marker to map
                 newMarker = L.marker(currentMarker).addTo(mymap);
 
+
                 // Creates text for current popup
                 var newPopup = `<strong>${responseArray[i].name}:</strong> ${responseArray[i]._embedded.venues[0].name}`;
                 
@@ -108,6 +112,9 @@ $(document).ready(function() {
                 newMarker.bindPopup(newPopup); 
                 
             }
+            
+            var currentMarker = [results.latitude, results.longitude];
+
 
         })
     

@@ -29,8 +29,7 @@
 
       <link rel="stylesheet" type="text/css" href="resources/style/style.css">
 
-    
-      <script src="resources/scripts/ticketScript.js"></script>
+  
 
       
   </head>
@@ -49,6 +48,7 @@
                 <span aria-hidden="true"></span>
               </a>
             </div>
+
             <div id="navbarMenuHeroB" class="navbar-menu">
               <div class="navbar-end">
                 <a class="navbar-item is-active">
@@ -65,7 +65,6 @@
     
       <div class="hero-body">
         <div class="columns">
-
           <div class="column">
             <div class="card">
               <div class="field">
@@ -89,7 +88,7 @@
               <div class="field">
                 <label class="label">Venue</label>
                 <div class="control">
-                  <input class="input" type="email" placeholder="Bridgestone Arena">
+                  <input class="input" type="text" placeholder="Bridgestone Arena">
                 </div>
               </div>
             </div> 
@@ -118,12 +117,15 @@
               <div class="field">
                 <label class="label">Venue</label>
                 <div class="control">
-                  <input class="input" type="email" placeholder="Bridgestone Arena">
+                  <input class="input" type="text" placeholder="Bridgestone Arena">
                 </div>
               </div>
             </div> 
-            
-            
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <button class="button is-danger is-fullwidth" id="submitBtn">Submit</button>
           </div>
         </div>
       </div>
@@ -162,9 +164,11 @@
       <div id="map"></div>
     </section>
 
-
+    <script>
+      var results = {};
+    </script>
     <script src="resources/scripts/mapScript.js"></script>
-
+    <script src="resources/scripts/ticketScript.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
