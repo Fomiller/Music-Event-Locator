@@ -15,6 +15,7 @@ $(document).ready(function() {
         var localLatLong = "latlong=" + geoplugin_latitude() + "," + geoplugin_longitude() + "&";
         var radius;
         var stateCode = "stateCode=" + $("#stateID").val() + "&";
+        console.log(stateCode);
         var size = "size=" + 20 + "&";
         // var city = "city=" + + "&";
         // the map api takes in longitude then lat.
@@ -26,8 +27,7 @@ $(document).ready(function() {
         // desc = descending a-z; 1-10
         // Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 'venueName,asc', 'venueName,desc', 'random'
         var sort;
-
-        // GENRE LOGIC
+    // GENRE LOGIC
         // Get genre value as a string from genreID input
         var getGenre = $("#genreID").val();
         // create and array from the getGenre variable
