@@ -3,6 +3,24 @@ $(document).ready(function() {
     // API KEY
     var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
+
+    // $("#startDate").on("keyup", function() {
+    //     var trace = $(this).val().replace(/\//g, "").substring(0,8);
+    //     console.log("LENGTH: ", trace.length);
+    //     if (trace.length > 5 && trace.length % 2 === 0)  {
+    //         var current = trace.replace(/^([0-1]?[0-9]){1}([0-3]?[0-9]){1}(20\d\d){1}$/, "$1/$2/$3");
+    //         console.log("BEFORE: ", current);
+    //         if (moment(current).isValid()) {
+    //             console.log("IS VALID");
+    //             current = moment(current).format("MM/DD/YYYY");
+    //         } else {
+    //             console.log("NOT VALID");
+    //         }
+    //     }
+    //     var value = (current) ? current : trace;
+    //     console.log("AFTER: ", value);
+    //     $(this).val(value);
+    // });
     
     function getEventDetails() {
         // Filter by classification name: name of any segment, genre, sub-genre, type, sub-type. Negative filtering is supported by using the following format '-'. Be aware that negative filters may cause decreased performance.
@@ -44,8 +62,10 @@ $(document).ready(function() {
         // runs above function
         eventTypeFunc();
         console.log(eventType);
-        var startDateTime = "startDateTime=" + $("#startDate") + "&";
-        var endDateTime = "endDateTime=" + $("#endDate") + "&";
+        var startDateTime = "startDateTime=" + $("#startDate").val() + "&";
+        console.log("Start" + startDateTime)
+        var endDateTime = "endDateTime=" + $("#endDate").val() + "&";
+        console.log("end" + endDateTime)
 
         // URL used to request event details 
         // var eventDetailsURL = queryURL + eventType + keyword + city + postalCode + size + apiKey ;
