@@ -154,6 +154,8 @@ $(document).ready(function() {
             }
         };
 
+
+
         
     });
     
@@ -181,7 +183,7 @@ $(document).ready(function() {
         var img = $("<img>").attr({ "src": bandArr.images[2].url, "alt": `${bandArr.name} image` });
 
         // Builds Star Button
-        var button = $("<button>").addClass("button is-white").attr({ "id": bandArr.id, "data-is-saved": false });
+        var button = $("<button>").addClass("button is-white bandButton").attr({ "id": bandArr.id, "data-is-saved": false });
         var buttonSpan = $("<span>").addClass("icon");
         var iconImg = $("<i>").addClass("far fa-star").css("color", "#e6e600")
         button.append(buttonSpan.append(iconImg));
@@ -210,9 +212,12 @@ $(document).ready(function() {
 
 
 
-    $("#submitBtn").on("click", getEventDetails);
+    $("#submitBtn").on("click", function() {
+        getEventDetails()
+        $('html, body').animate({
+            scrollTop: $('.mapboxArea').offset().top
+        }, 200);
+    });
     // getEventDetails(); 
-
 // END DOCUMENT.READY
 })
-
