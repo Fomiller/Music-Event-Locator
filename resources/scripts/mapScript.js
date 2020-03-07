@@ -1,5 +1,7 @@
 var mymap
 // Gets user coords in order to center map
+
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(res) {
     var lat = res.coords.latitude;

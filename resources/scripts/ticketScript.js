@@ -3,6 +3,8 @@ $(document).ready(function() {
     // API KEY
     var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
+    console.log(lat)
+    console.log(long)
 
     // start date function just keeping around to look at some regex work. felt cute might delete later?
 
@@ -153,10 +155,90 @@ $(document).ready(function() {
         $("#search-section").append(outerContainer);
     };
 
+    function featureEvents(){
+        var keyword = "keyword=" + $("#artistID").val() + "&";
+        var eventType = "classificationName=";
+        var stateCode = "stateCode=" + $("#stateID").val() + "&";
+        var postalCode = "postalCode=" + $("#zipID").val() + "&";
+        var radius = "radius=" + 100 + "&";
+        var unit = "unit=miles&"
+        var size = "size=" + 3 + "&";
+
+        // GENRE LOGIC
+        // Get genre value as a string from genreID input
+        function genreFunction() {
+            if ($("#genreID").val() === ""){
+                return eventType
+            } else {
+                // create and array from the getGenre variable
+                genreArray = getGenre.split(",");
+
+                // concat the indiviudal comma seperated values into a string that starts with classificationName= and ends in an "&"
+                var eventTypeFunc = function() {
+                    genreArray.forEach(input => eventType += input.trim() + "+")
+                    return eventType;
+                }
+                eventTypeFunc();
+            }
+        }
+
+        genreFunction();
+            
+        // URL used to request event details 
+        var eventDetailsURL = queryURL + keyword + eventType + "&" + stateCode + postalCode + radius + unit + size + apiKey ;
+        console.log(eventDetailsURL)
+        console.log("keyword: " + keyword)
+        console.log("event type: " + eventType);
+        console.log("state Code: " + stateCode);
+        console.log("postal Code: " + postalCode);
+        console.log("radius: " + radius)
+
+        // ajax request for event details    
+        $.ajax({
+            url: eventDetailsURL,
+            method: "GET",
+        }).then(function(response){
+
+            // create the responseArray
+            responseArray = [];
+
+            // populate the responseArray
+            response._embedded.events.forEach(event => {responseArray.push(event);});
+
+            // Pans to recenter map, zooms in closer.
+            mymap.panTo([responseArray[0]._embedded.venues[0].location.latitude, responseArray[0]._embedded.venues[0].location.longitude]);
+        
+            // For Loop creates pins for every search result and places them on map
+            for (var i = 0; i < responseArray.length; i++) {
+            // Sets latitude and longitude of current marker
+            var currentMarker = [responseArray[i]._embedded.venues[0].location.latitude, responseArray[i]._embedded.venues[0].location.longitude];
+
+            // Pins current marker to map
+            newMarker = L.marker(currentMarker).addTo(mymap);
+
+            // Creates text for current popup
+            var newPopup = `<strong>${responseArray[i].name}:</strong> ${responseArray[i]._embedded.venues[0].name}`;
+            
+            // Adds current popup to current marker
+            newMarker.bindPopup(newPopup); 
+        }
+
+
+        // This function will place the results onto the results page.
+        for (var i = 0; i < responseArray.length; i++) {
+            for (var i = 0; i < responseArray.length; i++) {
+                createCard(responseArray[i])
+            }
+        };
+    });
+        
+    // END FEATURED EVENTS FUNCTION
+    }
 
 
     $("#submitBtn").on("click", getEventDetails);
     // getEventDetails(); 
+    
 
 // END DOCUMENT.READY
 })
