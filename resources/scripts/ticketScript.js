@@ -1,18 +1,9 @@
-var myApp = {};
-function getLocation() {
-    navigator.geolocation.getCurrentPosition(function(res) {
-        console.log(res);
-        myApp.lat = res.coords.latitude;
-        myApp.long = res.coords.longitude;
-        });
-    }
-getLocation();
-
 $(document).ready(function() {
     // GLOBAL VARIABLES
     // API KEY
     var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
+    console.log(myApp)
     
 
 
@@ -221,6 +212,7 @@ $(document).ready(function() {
         //         createCard(responseArray[i])
         //     }
         // };
+    };
 
     $("#submitBtn").on("click", function() {
         getEventDetails()
@@ -231,5 +223,3 @@ $(document).ready(function() {
     // getEventDetails(); 
 // END DOCUMENT.READY
 });
-
-
