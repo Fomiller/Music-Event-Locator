@@ -1,15 +1,16 @@
 var mymap
 // Gets user coords in order to center map
+var myApp = {};
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(res) {
-    var lat = res.coords.latitude;
-    var long = res.coords.longitude;
-    var userCoords = [lat, long];
+    myApp.lat = res.coords.latitude;
+    myApp.long = res.coords.longitude;
+    myApp.userCoords = [myApp.lat, myApp.long];
     
   
     // Creates a new map using user coords
-    mymap = L.map('map').setView(userCoords, 11);
+    mymap = L.map('map').setView(myApp.userCoords, 11);
   
     // Styles newly created map
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
