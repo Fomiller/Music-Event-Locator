@@ -150,8 +150,76 @@ $(document).ready(function() {
         // This function will place the results onto the results page.
         for (var i = 0; i < responseArray.length; i++) {
             for (var i = 0; i < responseArray.length; i++) {
-                createCard(responseArray[i])
+                // Assembles components for outer framework for band card
+                var outerContainer = $("<div>").addClass("columns");
+                var innerContainer = $("<div>").addClass("column");
+                var bandCard = $("<div>").addClass("card");
+                var innerColumns = $("<div>").addClass("columns");
+
+                // Builds out base divs to be filled
+                var imageDiv = $("<div>").addClass("column is-3");
+                var descriptionDiv = $("<div>").addClass("column");
+
+                // Builds image for imageDiv
+                var imgFigure = $("<figure>").addClass("image");
+                var img = $("<img>").attr({ "src": responseArray[i].images[2].url, "alt": `${responseArray[i].name} image` });
+
+                // Builds Star Button
+                var button = $("<button>").addClass("button is-white bandButton").attr({ "id": responseArray[i].id, "data-is-saved": false });
+                var buttonSpan = $("<span>").addClass("icon");
+                var iconImg = $("<i>").addClass("far fa-star").css("color", "#e6e600")
+                button.append(buttonSpan.append(iconImg));
+
+                // Builds all components for descriptionDiv
+                var title = $("<h3>").addClass("title is-3").text(responseArray[i].name).append(button);
+                var bioDiv = $("<div>");
+
+                var eventVenue = $("<h5>").addClass("title is-5 is-inline mr-1").text(responseArray[i]._embedded.venues[0].name);
+                var eventDate = $("<h5>").addClass("title is-5 is-inline").text(responseArray[i].dates.start.localDate)
+                bioDiv.append(eventVenue, eventDate);
+
+                // Pieces together each major Div
+                descriptionDiv.append(title, bioDiv);
+                imageDiv.append(imgFigure.append(img));
+
+                // Builds all outer framework
+                innerColumns.append(imageDiv, descriptionDiv);
+                bandCard.append(innerColumns);
+                innerContainer.append(bandCard);
+                outerContainer.append(innerContainer);
+
+                // Appends new artist to html
+                $("#search-section").append(outerContainer);
+
+                
+
             }
+            $(".bandButton").on("click", function () {
+                // Fills in star icon
+                $(this).children().children().addClass("fas");
+                
+                // Creates band obj to send to localStorage
+                var savedBandId = $(this).attr("id")
+                var savedBandName = $(this).parent().text();
+                var savedBandVenue = $(this).parent().siblings().children(":first").text()
+                var savedBandDate = $(this).parent().siblings().children(":last").text();
+                var savedBandImgSrc = $(this).parent().parent().siblings().children().children().attr("src");
+
+                var newSavedBand = {
+                    "id": savedBandId,
+                    "name": savedBandName,
+                    "venue": savedBandVenue,
+                    "date": savedBandDate,
+                    "imgSrc": savedBandImgSrc
+                }
+
+                // Adds chosen band object to local storage
+                var savedBands = JSON.parse(localStorage.getItem("favoriteBands")) || [];
+                savedBands.push(newSavedBand);
+                localStorage.setItem("favoriteBands", JSON.stringify(savedBands));
+                
+
+            })
         };
 
 
@@ -164,70 +232,6 @@ $(document).ready(function() {
 
 
 
-    // This will need to be run x number of times based on what local storage returns
-    function createCard(bandArr) {
-        console.log("BAND: " + bandArr)
-
-        // Assembles components for outer framework for band card
-        var outerContainer = $("<div>").addClass("columns");
-        var innerContainer = $("<div>").addClass("column");
-        var bandCard = $("<div>").addClass("card");
-        var innerColumns = $("<div>").addClass("columns");
-
-        // Builds out base divs to be filled
-        var imageDiv = $("<div>").addClass("column is-3");
-        var descriptionDiv = $("<div>").addClass("column");
-
-        // Builds image for imageDiv
-        var imgFigure = $("<figure>").addClass("image");
-        var img = $("<img>").attr({ "src": bandArr.images[2].url, "alt": `${bandArr.name} image` });
-
-        // Builds Star Button
-        var button = $("<button>").addClass("button is-white bandButton").attr({ "id": bandArr.id, "data-is-saved": false });
-        var buttonSpan = $("<span>").addClass("icon");
-        var iconImg = $("<i>").addClass("far fa-star").css("color", "#e6e600")
-        button.append(buttonSpan.append(iconImg));
-
-        // Builds all components for descriptionDiv
-        var title = $("<h3>").addClass("title is-3").text(bandArr.name).append(button);
-        var bioDiv = $("<div>");
-        
-        var eventVenue = $("<h5>").addClass("title is-5 is-inline mr-1").text(bandArr._embedded.venues[0].name);
-        var eventDate = $("<h5>").addClass("title is-5 is-inline").text(bandArr.dates.start.localDate)
-        bioDiv.append(eventVenue, eventDate);
-
-        // Pieces together each major Div
-        descriptionDiv.append(title, bioDiv);
-        imageDiv.append(imgFigure.append(img));
-
-        // Builds all outer framework
-        innerColumns.append(imageDiv, descriptionDiv);
-        bandCard.append(innerColumns);
-        innerContainer.append(bandCard);
-        outerContainer.append(innerContainer);
-
-        // Appends new artist to html
-        $("#search-section").append(outerContainer);
-        $(".bandButton").on("click", function() {
-            console.log("working");
-            // Changes star to become just an outline
-            $(this).children().children().toggleClass("far");
-        
-            $(this).parent().parent().parent().empty();
-        
-            for (var i = 0; i < savedBands.length; i++) {
-              if (savedBands[i].id === $(this).attr("id")) {
-                savedBands.splice(i,1);
-                
-                localStorage.setItem("favoriteBands", JSON.stringify(savedBands));
-              }
-            }
-        
-        
-          })
-    };
-
-
 
     $("#submitBtn").on("click", function() {
         getEventDetails()
@@ -238,3 +242,5 @@ $(document).ready(function() {
     // getEventDetails(); 
 // END DOCUMENT.READY
 })
+
+
