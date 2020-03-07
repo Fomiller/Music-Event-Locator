@@ -57,6 +57,22 @@ $(document).ready(function() {
 
   addSavedArtistsToPage();
 
+  $("button").on("click", function () {
+    console.log("working");
+    // Changes star to become just an outline
+    $(this).children().children().toggleClass("far");
+
+    $(this).parent().parent().parent().empty();
+
+    for (var i = 0; i < savedBands.length; i++) {
+      if (savedBands[i].id === $(this).attr("id")) {
+        savedBands.splice(i, 1);
+
+        localStorage.setItem("favoriteBands", JSON.stringify(savedBands));
+      }
+    }
+  })
+
 
 
 });
