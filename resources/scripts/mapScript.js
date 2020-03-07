@@ -1,15 +1,12 @@
 var mymap
 // Gets user coords in order to center map
-globalCoords = {
-  "lat": lat,
-  "log":long,
-}
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(res) {
-    lat = res.coords.latitude;
-    long = res.coords.longitude;
+    var lat = res.coords.latitude;
+    var long = res.coords.longitude;
     var userCoords = [lat, long];
+    
   
     // Creates a new map using user coords
     mymap = L.map('map').setView(userCoords, 11);
