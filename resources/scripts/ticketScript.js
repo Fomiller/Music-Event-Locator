@@ -4,6 +4,8 @@ $(document).ready(function() {
     var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
 
+    // start date function just keeping around to look at some regex work. felt cute might delete later?
+
     // $("#startDate").on("keyup", function() {
     //     var trace = $(this).val().replace(/\//g, "").substring(0,8);
     //     console.log("LENGTH: ", trace.length);
