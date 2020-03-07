@@ -14,16 +14,15 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   </head>
-  <body>
+
+  <body class="site">
     <section class="hero is-primary is-medium">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
             <nav class="navbar" role="navigation" aria-label="main navigation">
               <div class="container">
                 <div class="navbar-brand">
-                  <figure class="image">
-                    <img src="https://lh3.googleusercontent.com/proxy/21Ujv4N8cCYBGJCo73_mrOJwSsDRX7e_QLJxaNA8HUDa6Vs1T2QIGg_T-CJqGkKS7eRsW_Tyn5iNis8NVQLEPeG2z4w4gozgmzF10wj3DsXGumoge0-YuR-6yLYYs0Y" width="64px" height="auto">
-                  </figure>
+                  <i class="fab fa-medium-m my-1 ml-1" id="navLogo"></i>
                   <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenuHeroB">
                       <span aria-hidden="true"></span>
                       <span aria-hidden="true"></span>
@@ -42,46 +41,29 @@
                 </div>
               </div>
             </nav>
-          </div>
-      
+        </div> 
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                My Bands
-              </h1>
-              <h2 class="subtitle">
-                subtitle
-              </h2>
-            </div>
+          <div class="container">
+            <h1 class="title">
+              My Bands
+            </h1>
+            <h2 class="subtitle">
+              subtitle
+            </h2>
           </div>
-      
-      </section>
-      <section id="mybands" class="py-5">
+        </div>
+    </section>
+  <main class="siteContent">  
 
+    <section id="mybands" class="py-5">
 		<!-- This is where all the saved events will go -->
-		<div class="container" id="myBandsContainer">
-		</div>
+		  <div class="container" id="myBandsContainer">
 
-	</section>
-    
+		  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	  </section>
+  </main> 
 
 
 
@@ -126,5 +108,6 @@
     }
   });
 </script>
+
 </body>
 </html>
