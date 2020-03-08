@@ -50,7 +50,6 @@ $(document).ready(function() {
                     var iconImg = $("<i>").addClass("far fa-star").css("color", "#e6e600")
                     button.append(buttonSpan.append(iconImg));
     
-    
                     // Builds all components for contentDiv
                     var media = $("<div>").addClass("media");
                     var mediaContent = $("<div>").addClass("media-content");
@@ -73,13 +72,7 @@ $(document).ready(function() {
                     // Builds all outer framework
                     bandCard.append(imageDiv, contentDiv);
                     innerContainer.append(bandCard);
-                    $("#featuredBandsColumns").append(innerContainer);
-    
-                    // Appends new artist to html
-                    // $("#search-section").append(outerContainer);
-    
-                    
-    
+                    $("#featuredBandsColumns").append(innerContainer);                  
                 }
                 $(".bandButton").on("click", function () {
                     // Fills in star icon
@@ -139,19 +132,11 @@ $(document).ready(function() {
                 }
                 eventTypeFunc();
             }
-        }
-
+        };
         genreFunction();
             
         // URL used to request event details 
         var eventDetailsURL = queryURL + keyword + eventType + "&" + stateCode + postalCode + radius + unit + size + apiKey ;
-        console.log(eventDetailsURL)
-        console.log("keyword: " + keyword)
-        console.log("event type: " + eventType);
-        console.log("state Code: " + stateCode);
-        console.log("postal Code: " + postalCode);
-        console.log("radius: " + radius)
-
         // ajax request for event details    
         $.ajax({
             url: eventDetailsURL,
