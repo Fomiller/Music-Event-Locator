@@ -1,32 +1,111 @@
+// GLOBAL VARIABLES
+// API KEY
+var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
+var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
+console.log(gpsObj)
+
 $(document).ready(function() {
-    // GLOBAL VARIABLES
-    // API KEY
-    var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
-    console.log(myApp)
+
+    var featureEvents = function(){
+        var eventType = "classificationName=country&";
+        var latlon = "&latlong=" + 35.9328 + "," + -86.8788;
+        var size = "size=" + 3 + "&";
+        var radius = "radius=" + 100 + "&";
+            
+        // URL used to request event details 
+        var featureEventsURL = queryURL + eventType + size + radius + apiKey + latlon;
     
-
-
-    // start date function just keeping around to look at some regex work. felt cute might delete later?
-
-    // $("#startDate").on("keyup", function() {
-    //     var trace = $(this).val().replace(/\//g, "").substring(0,8);
-    //     console.log("LENGTH: ", trace.length);
-    //     if (trace.length > 5 && trace.length % 2 === 0)  {
-    //         var current = trace.replace(/^([0-1]?[0-9]){1}([0-3]?[0-9]){1}(20\d\d){1}$/, "$1/$2/$3");
-    //         console.log("BEFORE: ", current);
-    //         if (moment(current).isValid()) {
-    //             console.log("IS VALID");
-    //             current = moment(current).format("MM/DD/YYYY");
-    //         } else {
-    //             console.log("NOT VALID");
-    //         }
-    //     }
-    //     var value = (current) ? current : trace;
-    //     console.log("AFTER: ", value);
-    //     $(this).val(value);
-    // });
+        // ajax request for featured event details    
+        $.ajax({
+            url: featureEventsURL,
+            method: "GET",
+        }).then(function(featureResponse){
     
+            console.log(featureResponse);
+            // create the featureResponseArray
+            featureResponseArray = [];
+            // populate the featureResponseArray
+            featureResponse._embedded.events.forEach(event => {featureResponseArray.push(event);});
+            
+    
+            // This function will place the results onto the results page.
+            for (var i = 0; i < featureResponseArray.length; i++) {
+                for (var i = 0; i < featureResponseArray.length; i++) {
+    
+                    // Assembles components for outer framework for band card
+                    var innerContainer = $("<div>").addClass("column is-one-third");
+                    var bandCard = $("<div>").addClass("card").css("min-height", "550px");
+    
+                    // Builds out base divs to be filled
+                    var imageDiv = $("<div>").addClass("card-image");
+                    var contentDiv = $("<div>").addClass("card-content");
+    
+                    // Builds image for imageDiv
+                    var imgFigure = $("<figure>").addClass("image is-4by3");
+                    var img = $("<img>").attr({ "src": featureResponseArray[i].images[2].url, "alt": `${featureResponseArray[i].name} image` });
+    
+                    // Builds Star Button
+                    var button = $("<button>").addClass("button is-white bandButton").attr({ "id": featureResponseArray[i].id, "data-is-saved": false });
+                    var buttonSpan = $("<span>").addClass("icon");
+                    var iconImg = $("<i>").addClass("far fa-star").css("color", "#e6e600")
+                    button.append(buttonSpan.append(iconImg));
+    
+                    // Builds all components for contentDiv
+                    var media = $("<div>").addClass("media");
+                    var mediaContent = $("<div>").addClass("media-content");
+                    var titleDiv = $("<h4>").addClass("title is-4 featured-title").text(featureResponseArray[i].name).append(button);
+                    var featuredContentDiv = $("<div>").addClass("content featured-content");
+                    var break1 = $("<br>")
+                    var eventVenue = $("<h5>").addClass("title is-5 is-inline mr-1").text(featureResponseArray[i]._embedded.venues[0].name);
+                    var timeDiv = $("<time>").text(featureResponseArray[i].dates.start.localDate)
+    
+                    // pieces together media div
+                    media.append(mediaContent.append(titleDiv));
+    
+                    // pieces together featured content div
+                    featuredContentDiv.append(eventVenue, break1, timeDiv)
+    
+                    // Pieces together each major Div
+                    contentDiv.append(media, featuredContentDiv);
+                    imageDiv.append(imgFigure.append(img));
+    
+                    // Builds all outer framework
+                    bandCard.append(imageDiv, contentDiv);
+                    innerContainer.append(bandCard);
+                    $("#featuredBandsColumns").append(innerContainer);                  
+                }
+                $(".bandButton").on("click", function () {
+                    // Fills in star icon
+                    $(this).children().children().addClass("fas");
+                    
+                    // Creates band obj to send to localStorage
+                    var savedBandId = $(this).attr("id")
+                    var savedBandName = $(this).parent().text();
+                    var savedBandVenue = $(this).parent().parent().parent().siblings(".featured-content").children(":first").text();
+                    var savedBandDate = $(this).parent().parent().parent().siblings(".featured-content").children(":last").text()
+                    var savedBandImgSrc = $(this).parent().parent().parent().parent().siblings(".card-image").children().children().attr("src");
+    
+                    var newSavedBand = {
+                        "id": savedBandId,
+                        "name": savedBandName,
+                        "venue": savedBandVenue,
+                        "date": savedBandDate,
+                        "imgSrc": savedBandImgSrc
+                    }
+    
+                    // Adds chosen band object to local storage
+                    var savedBands = JSON.parse(localStorage.getItem("favoriteBands")) || [];
+                    savedBands.push(newSavedBand);
+                    localStorage.setItem("favoriteBands", JSON.stringify(savedBands));
+                    
+    
+                })
+            };
+        })
+    
+    };
+    featureEvents();
+
     function getEventDetails() {
         var keyword = "keyword=" + $("#artistID").val() + "&";
         var eventType = "classificationName=";
@@ -53,19 +132,11 @@ $(document).ready(function() {
                 }
                 eventTypeFunc();
             }
-        }
-
+        };
         genreFunction();
             
         // URL used to request event details 
         var eventDetailsURL = queryURL + keyword + eventType + "&" + stateCode + postalCode + radius + unit + size + apiKey ;
-        console.log(eventDetailsURL)
-        console.log("keyword: " + keyword)
-        console.log("event type: " + eventType);
-        console.log("state Code: " + stateCode);
-        console.log("postal Code: " + postalCode);
-        console.log("radius: " + radius)
-
         // ajax request for event details    
         $.ajax({
             url: eventDetailsURL,
@@ -182,37 +253,7 @@ $(document).ready(function() {
     // End getEventDetails function
     };
 
-    function featureEvents(){
-        var eventType = "classificationName=music&";
-        var latlong = "latlong=" + myApp.lat + "+" + myApp.long;
-        var size = "size=" + 3 + "&";
-        console.log(latlong)
-            
-        // URL used to request event details 
-        var featureEventsURL = queryURL + eventType + latlong + size + apiKey;
 
-        // ajax request for event details    
-        $.ajax({
-            url: featureEventsURL,
-            method: "GET",
-        }).then(function(featureResponse){
-
-            console.log(featureResponse);
-
-            // create the featureResponseArray
-            featureResponseArray = [];
-
-            // populate the featureResponseArray
-            featureResponse._embedded.events.forEach(event => {featureResponseArray.push(event);});
-        
-        })
-        // This function will place the results onto the results page.
-        // for (var i = 0; i < responseArray.length; i++) {
-        //     for (var i = 0; i < responseArray.length; i++) {
-        //         createCard(responseArray[i])
-        //     }
-        // };
-    };
 
     $("#submitBtn").on("click", function() {
         getEventDetails()
