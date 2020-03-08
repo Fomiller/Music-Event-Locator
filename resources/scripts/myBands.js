@@ -27,6 +27,7 @@ $(document).ready(function() {
     // Builds image for imageDiv
     var imgFigure = $("<figure>").addClass("image");
     var img = $("<img>").attr({ "src": bandArr.imgSrc, "alt": `${bandArr.name} image`});
+    var buyTickets = $("<a>").attr({"href": bandArr.link, "target": "_blank"}).text("Buy tickets here!");
     
     // Builds Star Button
     var button = $("<button>").addClass("button is-white").attr({"id": bandArr.id, "data-is-saved": true});
@@ -43,7 +44,7 @@ $(document).ready(function() {
 
     // Pieces together each major Div
     descriptionDiv.append(title, bioDiv);
-    imageDiv.append(imgFigure.append(img));
+    imageDiv.append(imgFigure.append(img, buyTickets));
 
    // Builds all outer framework
    innerColumns.append(imageDiv, descriptionDiv);
