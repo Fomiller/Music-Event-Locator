@@ -61,12 +61,15 @@
           <!-- Search form -->
         <div class="columns">
 		  <div class="column"> 
+			  <div class="has-text-centered py-1">
+				  <h1 class="title is-1">Search for music your way</h1>
+			  </div>
 			<!-- search form wrapper -->
 			<div class="card">
 			  <div class="columns">
 				<!-- left search -->
 				<div class="column is-half">
-				  <div class="field">
+					<div class="field">
 					<label class="label">Artist</label>
 					<div class="control">
 					  <input class="input" id="artistID" type="text" placeholder="The Eagles, Post Malone, Tim McGraw, etc.">
@@ -175,20 +178,20 @@
 				<!-- right search -->
 				<div class="column is-half">
 							  <div class="field">
-								<label class="label">Which Color</label>
-								<button class="button is-fullwidth gradient1" id="blueBtn"></button>
+								<label class="label">Happy</label>
+								<button value="1" class="button is-fullwidth gradient1" id="mood1"></button>
 							  </div>
 							  <div class="field">
-								<label class="label">Best Matches</label>
-								<button class="button is-fullwidth gradient2" id="yellowBtn"></button>
+								<label class="label">Energetic</label>
+								<button value="2" class="button is-fullwidth gradient2" id="mood2"></button>
 							  </div>
 							  <div class="field">
-								<label class="label">Your Mood</label>
-								<button class="button is-fullwidth gradient3" id="redBtn"></button>
+								<label class="label">Chill</label>
+								<button value="3" class="button is-fullwidth gradient3" id="mood3"></button>
 							  </div>
 							  <div class="field">
-								<label class="label">??????</label>
-								<button class="button is-fullwidth gradient5" id="randomBtn"></button>
+								<label class="label">Im not sure</label>
+								<button value="4" class="button is-fullwidth gradient5" id="mood4"></button>
 							  </div> 
 						</div>
 					</div>
@@ -198,7 +201,7 @@
         <!-- Search Button -->
         <div class="columns">
           <div class="column is-4 is-offset-4">
-            <button class="button is-danger is-fullwidth" id="submitBtn">Submit</button>
+            <button class="button is-danger is-fullwidth" id="submitBtn">Search</button>
           </div>
         </div>
       </div>

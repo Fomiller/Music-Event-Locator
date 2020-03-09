@@ -3,11 +3,13 @@
 var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
 var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
 console.log(gpsObj)
+eventType = "classificationName="
+colorBtn=null;
 
 $(document).ready(function() {
 
     var featureEvents = function(){
-        var eventType = "classificationName=country&";
+        var eventType = "classificationName=music&";
         var latlon = "&latlong=" + 35.9328 + "," + -86.8788;
         var size = "size=" + 3 + "&";
         var radius = "radius=" + 100 + "&";
@@ -107,42 +109,66 @@ $(document).ready(function() {
     featureEvents();
 
     function getEventDetails() {
+        // console.log("submitbutton: " + colorBtn);
         var keyword = "keyword=" + $("#artistID").val() + "&";
-        var eventType = "classificationName=";
+        console.log(eventType);
         var getGenre = $("#genreID").val();
         var stateCode = "stateCode=" + $("#stateID").val() + "&";
         var postalCode = "postalCode=" + $("#zipID").val() + "&";
         var radius = "radius=" + $("#radiusID").val() + "&";
         var unit = "unit=miles&"
-        var size = "size=" + 50 + "&";
+        var size = "size=" + 25 + "&";
 
+
+        // eventType = setClassificationName(colorBtn);
+
+        
         // GENRE LOGIC
         // Get genre value as a string from genreID input
         function genreFunction() {
-            if ($("#genreID").val() === ""){
-                return eventType
-            } else {
                 // create and array from the getGenre variable
                 genreArray = getGenre.split(",");
 
-                // concat the indiviudal comma seperated values into a string that starts with classificationName= and ends in an "&"
                 var eventTypeFunc = function() {
                     genreArray.forEach(input => eventType += input.trim() + "+")
                     return eventType;
                 }
+                
+                if (typeof colorBtn === null){
+                    console.log(colorBtn)
+                }  else if (colorBtn === "1") {
+                    genreArray.push("country")
+                } else if (colorBtn === "2") {
+                    genreArray.push("electronic")
+                    genreArray.push("rap")
+                } else if (colorBtn === "3") {
+                    genreArray.push("blues")
+                } else if (colorBtn === "4") {
+                    // genreArray.push("music");
+                    // genreArray.push("jazz")
+                    genreArray.push("blues")
+                    genreArray.push("country")
+                    genreArray.push("rock")
+                    
+                } else {
+                    eventType = "classificationName="
+                }
                 eventTypeFunc();
-            }
+                // concat the indiviudal comma seperated values into a string that starts with classificationName= and ends in an "&"
+            
         };
         genreFunction();
+        
             
         // URL used to request event details 
         var eventDetailsURL = queryURL + keyword + eventType + "&" + stateCode + postalCode + radius + unit + size + apiKey ;
+        console.log(eventDetailsURL);
         // ajax request for event details    
         $.ajax({
             url: eventDetailsURL,
             method: "GET",
         }).then(function(response){
-
+            console.log(response)
             // create the responseArray
             responseArray = [];
 
@@ -250,9 +276,39 @@ $(document).ready(function() {
         
     });
     
+
+    eventType = "classificationName=";
+    genreArray= [];
+    colorBtn = null;
+    $("#genreID").val("")
     // End getEventDetails function
     };
 
+
+    $("#mood1").on("click", function() {
+        colorBtn = $(this).val()
+        console.log(colorBtn)
+        console.log(eventType) 
+  
+      })
+      $("#mood2").on("click", function() {
+          colorBtn = $(this).val()
+          console.log(colorBtn)
+          console.log(eventType) 
+  
+      })
+      $("#mood3").on("click", function() {
+          colorBtn = $(this).val()
+          console.log(colorBtn)
+
+  
+      })
+      $("#mood4").on("click", function() {
+          colorBtn = $(this).val()
+          console.log(colorBtn)
+          console.log(eventType) 
+  
+      })
 
 
     $("#submitBtn").on("click", function() {
