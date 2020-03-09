@@ -1,8 +1,7 @@
 // GLOBAL VARIABLES
 // API KEY
 var apiKey = "apikey=u7Yn7dxpD9z8ujjqVDvDM7MXi56YMO8g";
-var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?"
-console.log(gpsObj)
+var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?";
 eventType = "classificationName="
 colorBtn=null;
 
@@ -45,6 +44,7 @@ $(document).ready(function() {
                     // Builds image for imageDiv
                     var imgFigure = $("<figure>").addClass("image is-4by3");
                     var img = $("<img>").attr({ "src": featureResponseArray[i].images[2].url, "alt": `${featureResponseArray[i].name} image` });
+                    var buyTickets = $("<a>").addClass("link").attr({ "href": featureResponseArray[i].url, "target": "_blank" }).text("Buy tickets here!")
     
                     // Builds Star Button
                     var button = $("<button>").addClass("button is-white bandButton").attr({ "id": featureResponseArray[i].id, "data-is-saved": false });
@@ -57,7 +57,8 @@ $(document).ready(function() {
                     var mediaContent = $("<div>").addClass("media-content");
                     var titleDiv = $("<h4>").addClass("title is-4 featured-title").text(featureResponseArray[i].name).append(button);
                     var featuredContentDiv = $("<div>").addClass("content featured-content");
-                    var break1 = $("<br>")
+                    var break1 = $("<br>");
+                    var break2 = $("<br>");
                     var eventVenue = $("<h5>").addClass("title is-5 is-inline mr-1").text(featureResponseArray[i]._embedded.venues[0].name);
                     var timeDiv = $("<time>").text(featureResponseArray[i].dates.start.localDate)
     
@@ -65,7 +66,7 @@ $(document).ready(function() {
                     media.append(mediaContent.append(titleDiv));
     
                     // pieces together featured content div
-                    featuredContentDiv.append(eventVenue, break1, timeDiv)
+                    featuredContentDiv.append(eventVenue, break1, timeDiv, break2, buyTickets)
     
                     // Pieces together each major Div
                     contentDiv.append(media, featuredContentDiv);
@@ -84,15 +85,16 @@ $(document).ready(function() {
                     var savedBandId = $(this).attr("id")
                     var savedBandName = $(this).parent().text();
                     var savedBandVenue = $(this).parent().parent().parent().siblings(".featured-content").children(":first").text();
-                    var savedBandDate = $(this).parent().parent().parent().siblings(".featured-content").children(":last").text()
+                    var savedBandDate = $(this).parent().parent().parent().siblings(".featured-content").children("time").text()
                     var savedBandImgSrc = $(this).parent().parent().parent().parent().siblings(".card-image").children().children().attr("src");
-    
+                    var savedBandURL = $(this).parent().parent().parent().siblings().children(".link").attr("href"); 
                     var newSavedBand = {
                         "id": savedBandId,
                         "name": savedBandName,
                         "venue": savedBandVenue,
                         "date": savedBandDate,
-                        "imgSrc": savedBandImgSrc
+                        "imgSrc": savedBandImgSrc,
+                        "link": savedBandURL
                     }
     
                     // Adds chosen band object to local storage
