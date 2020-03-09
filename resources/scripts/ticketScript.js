@@ -211,6 +211,8 @@ $(document).ready(function() {
                 // Builds image for imageDiv
                 var imgFigure = $("<figure>").addClass("image");
                 var img = $("<img>").attr({ "src": responseArray[i].images[2].url, "alt": `${responseArray[i].name} image` });
+                var buyTickets = $("<a>").attr({"href": responseArray[i].url, "target": "_blank"}).text("Buy tickets here!")
+                
 
                 // Builds Star Button
                 var button = $("<button>").addClass("button is-white bandButton").attr({ "id": responseArray[i].id, "data-is-saved": false });
@@ -229,7 +231,7 @@ $(document).ready(function() {
 
                 // Pieces together each major Div
                 descriptionDiv.append(title, bioDiv);
-                imageDiv.append(imgFigure.append(img));
+                imageDiv.append(imgFigure.append(img), buyTickets);
 
                 // Builds all outer framework
                 innerColumns.append(imageDiv, descriptionDiv);
@@ -253,13 +255,15 @@ $(document).ready(function() {
                 var savedBandVenue = $(this).parent().siblings().children(":first").text()
                 var savedBandDate = $(this).parent().siblings().children(":last").text();
                 var savedBandImgSrc = $(this).parent().parent().siblings().children().children().attr("src");
+                var savedBandLink = $(this).parent().parent().siblings().children(":last").attr("href");
 
                 var newSavedBand = {
                     "id": savedBandId,
                     "name": savedBandName,
                     "venue": savedBandVenue,
                     "date": savedBandDate,
-                    "imgSrc": savedBandImgSrc
+                    "imgSrc": savedBandImgSrc,
+                    "link": savedBandLink
                 }
 
                 // Adds chosen band object to local storage
