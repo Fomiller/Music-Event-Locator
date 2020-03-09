@@ -63,7 +63,7 @@ $(document).ready(function() {
     // Changes star to become just an outline
     $(this).children().children().toggleClass("far");
 
-    $(this).parent().parent().parent().empty();
+    $(this).parent().parent().parent().parent().parent().empty();
 
     for (var i = 0; i < savedBands.length; i++) {
       if (savedBands[i].id === $(this).attr("id")) {
