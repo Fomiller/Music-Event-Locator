@@ -22,7 +22,6 @@ $(document).ready(function() {
             method: "GET",
         }).then(function(featureResponse){
     
-            console.log(featureResponse);
             // create the featureResponseArray
             featureResponseArray = [];
             // populate the featureResponseArray
@@ -111,9 +110,7 @@ $(document).ready(function() {
     featureEvents();
 
     function getEventDetails() {
-        // console.log("submitbutton: " + colorBtn);
         var keyword = "keyword=" + $("#artistID").val() + "&";
-        console.log(eventType);
         var getGenre = $("#genreID").val();
         var stateCode = "stateCode=" + $("#stateID").val() + "&";
         var postalCode = "postalCode=" + $("#zipID").val() + "&";
@@ -121,10 +118,6 @@ $(document).ready(function() {
         var unit = "unit=miles&"
         var size = "size=" + 25 + "&";
 
-
-        // eventType = setClassificationName(colorBtn);
-
-        
         // GENRE LOGIC
         // Get genre value as a string from genreID input
         function genreFunction() {
@@ -137,7 +130,6 @@ $(document).ready(function() {
                 }
                 
                 if (typeof colorBtn === null){
-                    console.log(colorBtn)
                 }  else if (colorBtn === "1") {
                     genreArray.push("country")
                 } else if (colorBtn === "2") {
@@ -164,13 +156,11 @@ $(document).ready(function() {
             
         // URL used to request event details 
         var eventDetailsURL = queryURL + keyword + eventType + "&" + stateCode + postalCode + radius + unit + size + apiKey ;
-        console.log(eventDetailsURL);
         // ajax request for event details    
         $.ajax({
             url: eventDetailsURL,
             method: "GET",
         }).then(function(response){
-            console.log(response)
             // create the responseArray
             responseArray = [];
 
@@ -293,26 +283,19 @@ $(document).ready(function() {
 
     $("#mood1").on("click", function() {
         colorBtn = $(this).val()
-        console.log(colorBtn)
-        console.log(eventType) 
   
       })
       $("#mood2").on("click", function() {
           colorBtn = $(this).val()
-          console.log(colorBtn)
-          console.log(eventType) 
   
       })
       $("#mood3").on("click", function() {
           colorBtn = $(this).val()
-          console.log(colorBtn)
 
   
       })
       $("#mood4").on("click", function() {
-          colorBtn = $(this).val()
-          console.log(colorBtn)
-          console.log(eventType) 
+          colorBtn = $(this).val();
   
       })
 

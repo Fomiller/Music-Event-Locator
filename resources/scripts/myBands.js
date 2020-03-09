@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   // Receives information from local storage or returns empty array
   var savedBands = JSON.parse(localStorage.getItem("favoriteBands")) || [];
-  console.log(savedBands)
 
   function addSavedArtistsToPage() {
     for (var i = 0; i < savedBands.length; i++) {
@@ -12,7 +11,6 @@ $(document).ready(function() {
 
   // This will need to be run x number of times based on what local storage returns
   function createFavoriteBandsCard(bandArr) {
-    console.log(bandArr)
 
     // Assembles components for outer framework for band card
     var outerContainer = $("<div>").addClass("columns");
@@ -59,7 +57,6 @@ $(document).ready(function() {
   addSavedArtistsToPage();
 
   $("button").on("click", function () {
-    console.log("working");
     // Changes star to become just an outline
     $(this).children().children().toggleClass("far");
 
