@@ -21,7 +21,7 @@ Deployed app can be found [here](https://fomiller.github.io/Music-Event-Locator/
 
 ## Screenshot
 
-![app interaction example gif](resources/screenshot/example.gif)
+![app interaction example gif](resources/screenshot/Music Event Locator.gif)
 
 ## Documentation links
 
