@@ -1,4 +1,6 @@
 # Music-Event-Locator
+![Commits](https://img.shields.io/github/last-commit/Fomiller/Music-Event-Locator)
+
 
 A group Project for Vanderbilt Full-stack coding boot camp
 Deployed app can be found [here](https://fomiller.github.io/Music-Event-Locator/).
